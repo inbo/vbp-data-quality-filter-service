@@ -31,6 +31,11 @@ liquibase.command.referencePassword: XXXXX
     </changeSet>
 
     <changeSet author="ALA Dev Team" id="20240118-00">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <columnExists tableName="quality_category" columnName="inverse_filter"/>
+            </not>
+        </preConditions>
         <sqlFile path="1.4.1.sql" relativeToChangelogFile="true" encoding="ISO-8859-1" stripComments="1" />
     </changeSet>
 
